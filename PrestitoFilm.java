@@ -7,7 +7,6 @@ public class PrestitoFilm {
     //Dichiarazioni variabili utilizzate nel programma
     static LocalDate dataOdierna = LocalDate.now();                                                          //La variabile assume il valore della data odierna grazie al metodo LocalDate.now()
     static Utente utenteMain = null;                                                                         //Inizializzazione variabile utenteMain, i valori gli saranno dati dopo il caricamento del file e relativo login 
-    static ArrayList<Film> elencoFilm = new ArrayList<Film>();                                               //ArrayList contenente i libri che verrano caricati da file
     static ArrayList<Utente> elencoUtenti = new ArrayList<Utente>();                                         //ArrayList contenente gli che verrano caricati da file    
     static HashMap<String, String> coppiePrestiti = new HashMap<String, String>();                           //HashMap contenente le coppie utente/film richiesto che verrano caricati da file
     static ArrayList<Prestito> elencoPrestiti = new ArrayList<>();                                           //ArrayList contenente i prestiti che verrano caricati da file
@@ -18,8 +17,10 @@ public class PrestitoFilm {
     /* Caricamento dai file txt */
 
     //Import dell'elenco dei film da file .txt, la stringa viene poi elaborata cosi da creare le istanze dei vari film ed aggiungerli all'elenco di libri*/
-    private static void caricamentoFilm() {
+    private static ArrayList<Film> caricamentoFilm() {
+        ArrayList<Film> elencoFilm = new ArrayList<Film>();
         try {
+
             File importFilm = new File("ElencoFilm.txt");
             Scanner myReader = new Scanner(importFilm);
 
@@ -41,6 +42,7 @@ public class PrestitoFilm {
             System.out.println("Errore, file non trovato");
             e.printStackTrace();
         }
+        return elencoFilm;
     }
 
     //Import dell'elenco degli utenti da file .txt, la stringa viene elaborata cosi da creare le istanze dei vari utenti ed aggiungerli all'elenco di utenti. La lista sarà utile per convalidare le credenziali di accesso
@@ -70,7 +72,7 @@ public class PrestitoFilm {
     }
 
      //Import delle coppie utente id film richiesto / data di prestito e lo stato del pagamento, verranno poi utilizzate per la effettiva creazione di un elenco dei prestiti
-    private static void caricamentoPrestiti() {
+    private static void caricamentoPrestiti(ArrayList<Film> elencoFilm) {
         try {
             File importPrestiti = new File("ElencoPrestiti.txt");
             Scanner myReader = new Scanner(importPrestiti);
@@ -203,7 +205,7 @@ public class PrestitoFilm {
     }
 
     //Stampa di tutti i film
-    private static void printElencofilm() {
+    private static void printElencofilm(ArrayList<Film> elencoFilm) {
         System.out.println("\n");
 
         for (Film film : elencoFilm) {
@@ -214,7 +216,7 @@ public class PrestitoFilm {
     }
 
     //Ricerca mediante titolo con possibilità di richiedere prestito
-    private static void cercaTitolo() {
+    private static void cercaTitolo(ArrayList<Film> elencoFilm) {
         System.out.println("\n");
         System.out.println("Inserisci l'id del film che desideri cercare\nOppure digita exit per uscire");
         boolean titolo_corretto = false;
@@ -275,7 +277,7 @@ public class PrestitoFilm {
     }
 
     //Ricerca mediante Regista
-    private static void cercaRegista() {
+    private static void cercaRegista(ArrayList<Film> elencoFilm) {
         boolean Regista_corretto = false;
 
         while (!Regista_corretto) {
@@ -317,7 +319,7 @@ public class PrestitoFilm {
     }
 
     //Ricerca mediante genere
-    private static void cercaGenere() {
+    private static void cercaGenere(ArrayList<Film> elencoFilm) {
         boolean genere_corretto = false;
 
         while (!genere_corretto) {
@@ -400,7 +402,7 @@ public class PrestitoFilm {
     /* Salvataggio su file txt */
 
     //Salvataggio su file dell'elenco dei film
-    private static void salvataggioFilm() {
+    private static void salvataggioFilm(ArrayList<Film> elencoFilm) {
         try {
             FileWriter myWriter = new FileWriter("ElencoFilm.txt");
             for (Film film : elencoFilm) {
@@ -443,9 +445,9 @@ public class PrestitoFilm {
 
     //Corpo del programma in cui si richiamano le funzioni definite precedentemente
     public static void main(String[] args) throws IOException {
-        caricamentoFilm();
+        ArrayList<Film> elencoFilm = caricamentoFilm();
         caricamentoUtenti();
-        caricamentoPrestiti();
+        caricamentoPrestiti(elencoFilm);
         accessoUtente();
         for (Prestito z : utenteMain.getPrestiti()) {
             z.getFilm().getID();
@@ -460,19 +462,19 @@ public class PrestitoFilm {
             input.nextLine();                       //Usato per ripulire l'input in quanto nextInt non legge il carattere "newline" che verrebbe preso come input in caso di metodo nextLine()
 
             if (scelta == 1) {
-                printElencofilm();
+                printElencofilm(elencoFilm);
             }
 
             if (scelta == 2) {
-                cercaTitolo();
+                cercaTitolo(elencoFilm);
             }
 
             if (scelta == 3) {
-                cercaRegista();
+                cercaRegista(elencoFilm);
             }
 
             if (scelta == 4) {
-                cercaGenere();
+                cercaGenere(elencoFilm);
             }
 
             if (scelta == 5) {
@@ -489,7 +491,7 @@ public class PrestitoFilm {
                 break;
             }
         }
-        salvataggioFilm();
+        salvataggioFilm(elencoFilm);
         salvataggioPrenotazioni();
         salvataggioUtenti();
     }
