@@ -1,0 +1,5 @@
+1,Barbie,fantasy,Ryan Gosling,true
+2,Harry Potter,fantasy,JKR,false
+3,Spiderman,fantasy,Sam Raimi,false
+4,Le Pagine Della Nostra Vita,romantico,Nick Cassavetes,false
+5,Il nome della rosa,storico,Annaud,true
