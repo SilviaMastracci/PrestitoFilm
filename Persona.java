@@ -3,12 +3,12 @@ public class Persona {
     /**
      * Inforamzioni generali di una persona
      */
-    private String Nome;
-    private String Cognome;
-    private String Password;
-    private String Email;
-    private String Indirizzo;
-    private String N_Telefono;
+    private String nome;
+    private String cognome;
+    private String password;
+    private String email;
+    private String indirizzo;
+    private String telefono;
 
     /**
      * @param nome nome della persona
@@ -16,22 +16,22 @@ public class Persona {
      * @param password password della persona
      * @param email email della persona
      * @param indirizzo indirizzo della persona
-     * @param n_telefono numero di telefono della persona
+     * @param telefono numero di telefono della persona
      */
-    public Persona(String nome, String cognome, String password, String email, String indirizzo, String n_telefono){
-        Nome = nome;
-        Cognome = cognome;
-        Password = password;
-        Email = email;
-        Indirizzo = indirizzo;
-        N_Telefono = n_telefono;
+    public Persona(String nome, String cognome, String password, String email, String indirizzo, String telefono){
+        this.nome = nome;
+        this.cognome = cognome;
+        this.password = password;
+        this.email = email;
+        this.indirizzo = indirizzo;
+        this.telefono = telefono;
     }
 
     /**
      * Stampa le infromazioni generali della persona
      */
     public String printInfo(){
-        return "-----------------------------------------" + "\nI tuoi dati sono i seguenti: \n" + "Nome e cognome: " + Nome + " " + Cognome + "\n" + "Email: " + Email + "\n" + "Indirizzo: " + Indirizzo + "\n" + "Numero di telefono: " + N_Telefono + "\n";
+        return "-----------------------------------------" + "\nI tuoi dati sono i seguenti: \n" + "Nome e cognome: " + nome + " " + cognome + "\n" + "Email: " + email + "\n" + "Indirizzo: " + indirizzo + "\n" + "Numero di telefono: " + telefono + "\n";
     }
 
     /**
@@ -39,7 +39,7 @@ public class Persona {
      * @param n nuovo nome
      */
     public void setNome(String n){
-        Nome = n;
+        this.nome = n;
     }
 
     /**
@@ -47,7 +47,7 @@ public class Persona {
      * @param c nuovo cognome
      */
     public void setCognome(String c){
-        Cognome = c;
+        this.cognome = c;
     }
     
     /**
@@ -55,7 +55,7 @@ public class Persona {
      * @param p nuova password
      */
     public void setPassword(String p){
-        Password = p;
+        this.password = p;
     }
 
     /**
@@ -63,7 +63,7 @@ public class Persona {
      * @param e nuova email
      */
     public void setEmail(String e){
-        Email = e;
+        this.email = e;
     }
 
     /**
@@ -71,15 +71,15 @@ public class Persona {
      * @param a nuovo indirizzo
      */
     public void setIndirizzo(String a){
-        Indirizzo = a;
+        this.indirizzo = a;
     }
 
     /**
      * Cambia il numero di telefono della persona
      * @param t nuovo numero di telefono
      */
-    public void setN_Telefono(String t){
-        N_Telefono = t;
+    public void setTelefono(String t){
+        this.telefono = t;
     }
 
     /**
@@ -87,14 +87,14 @@ public class Persona {
      * @return vslore di nome
      */
     public String getNome(){
-        return Nome;
+        return this.nome;
     }
 
     /**
      * Ritorna il cognome della persona
      */
     public String getCognome(){
-        return Cognome;
+        return this.cognome;
     }
 
     /**
@@ -102,7 +102,7 @@ public class Persona {
      * @return valore di password
      */
     public String getPassword(){
-        return Password;
+        return this.password;
     }
 
     /**
@@ -110,7 +110,7 @@ public class Persona {
      * @return valore di email
      */
     public String getEmail(){
-        return Email;
+        return this.email;
     }
 
     /**
@@ -118,14 +118,14 @@ public class Persona {
      * @return valore di indirizzo 
      */
     public String getIndirizzo(){
-        return Indirizzo;
+        return this.indirizzo;
     }
 
     /**
      * Ritorna il numero di telefono della persona
-     * @return valore di n_telefono
+     * @return valore di telefono
      */
-    public String getN_Telefono(){
-        return N_Telefono;
+    public String getTelefono(){
+        return this.telefono;
     }
 }

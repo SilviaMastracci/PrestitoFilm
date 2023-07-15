@@ -5,10 +5,10 @@ public class Film {
      * Imformazioni del libro
      */
     private String ID;
-    private String Titolo;
-    private String Genere;
-    private String Regista;
-    private String Descrizione;
+    private String titolo;
+    private String genere;
+    private String regista;
+    private String descrizione;
     private boolean inPrestito;
 
     /**
@@ -20,12 +20,12 @@ public class Film {
      * @param inprestito Stato del film
      */
     public Film(String id, String t, String g, String r, String d, boolean inprestito){
-        ID = id;
-        Titolo = t;
-        Genere = g;
-        Regista = r;
-        Descrizione = d;
-        inPrestito = inprestito;
+        this.ID = id;
+        this.titolo = t;
+        this.genere = g;
+        this.regista = r;
+        this.descrizione = d;
+        this.inPrestito = inprestito;
     }   
     
     /* Getter e Setter */
@@ -34,7 +34,7 @@ public class Film {
       * Ritorna le informazioni generali del film
       */
     public String getInfo(){
-        return Titolo + "\t" + Regista + "\t" + Genere;
+        return this.titolo + "\t" + this.regista + "\t" + this.genere;
         
     }
 
@@ -42,7 +42,7 @@ public class Film {
      * Ritorna il titolo del film
      */
     public String getTitolo(){
-        return Titolo;
+        return this.titolo;
     }
 
     /**
@@ -50,7 +50,7 @@ public class Film {
      * @return valore di Genere
      */
     public String getGenere(){
-        return Genere;
+        return this.genere;
     }
 
     /**
@@ -58,7 +58,7 @@ public class Film {
      * @return valore di regista
      */
     public String getRegista(){
-        return Regista;
+        return this.regista;
     }
 
     /**
@@ -66,7 +66,7 @@ public class Film {
      * @return valore di descrizione
      */
     public String getDescrizione(){
-        return Descrizione;
+        return this.descrizione;
     }
 
     /**
@@ -74,7 +74,7 @@ public class Film {
      * @return valore di inPrestito
      */
     public boolean getStatoPrestito(){
-        return inPrestito;
+        return this.inPrestito;
     }
 
     /**
@@ -82,7 +82,7 @@ public class Film {
      * @return  valore di ID
      */
     public String getID(){
-        return ID;
+        return this.ID;
     }
 
     /**
@@ -90,7 +90,7 @@ public class Film {
      * @param t nuovo titolo da dare al film
      */
     public void setTitolo(String t){
-        Titolo = t;
+        this.titolo = t;
     }
 
     /**
@@ -98,7 +98,7 @@ public class Film {
      * @param g nuovo genere da dare al libro
      */
     public void setGenere(String g){
-        Genere = g;
+        this.genere = g;
     }
 
     /**
@@ -106,7 +106,7 @@ public class Film {
      * @param r nuovo regista da assegnare al film
      */
     public void setRegista(String r){
-        Regista = r;
+        this.regista = r;
     }
 
     /**
@@ -114,7 +114,7 @@ public class Film {
      * @param d
      */
     public void setDescrizione(String d){
-        Descrizione = d;
+        this.descrizione = d;
     }
 
     /**
@@ -122,7 +122,7 @@ public class Film {
      * @param s nuovo valore di inprestito
      */
     public void setStatoPrestito(boolean s){
-        inPrestito = s;
+        this.inPrestito = s;
     }
 
     /**
@@ -130,7 +130,7 @@ public class Film {
      * @param i nuovo id da dare al regsitro  
      */
     public void setID(String i){
-        ID = i;
+        this.ID = i;
     }
 
     /**
@@ -141,7 +141,7 @@ public class Film {
     public Prestito faiPrestito(Utente utente){
         LocalDate pData = LocalDate.now();
         setStatoPrestito(true);
-        System.out.println("\nIl libro " + Titolo + " è stato preso in prestito da " + utente.getNome());
+        System.out.println("\nIl libro " + titolo + " è stato preso in prestito da " + utente.getNome());
         Prestito prestito = new Prestito(utente, this, pData, false);
         utente.addPrestito(prestito);
         return prestito;
@@ -176,7 +176,7 @@ public class Film {
      */
     @Override
     public String toString(){
-        return(ID+";"+Titolo+";"+Genere+";"+Regista+";"+Descrizione+";"+inPrestito);
+        return this.ID + ";" + this.titolo + ";" + this.genere + ";" + this.regista + ";" + this.descrizione + ";" + this.inPrestito;
     }
 }
 

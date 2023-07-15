@@ -19,10 +19,10 @@ public class Prestito {
      * @param pag stato del pagamento
      */
     public Prestito(Utente ute, Film f, LocalDate p, boolean pag){
-        utente = ute;
-        film = f;
-        pData = p;
-        pagato = pag;
+        this.utente = ute;
+        this.film = f;
+        this.pData = p;
+        this.pagato = pag;
     }
 
    
@@ -58,7 +58,7 @@ public class Prestito {
      * @return oggetto di tipo film
      */
     public Film getFilm(){   //restituisce il film
-        return film;
+        return this.film;
     }
 
     /**
@@ -66,7 +66,7 @@ public class Prestito {
      * @return oggetto di tipo utente
      */
     public Utente getUtente(){   //restituisce colui che ha preso in prestito il film
-        return utente;
+        return this.utente;
     }
 
     /**
@@ -74,7 +74,7 @@ public class Prestito {
      * @return oggetto di tipo data
      */
     public LocalDate getDataPrestito(){
-        return pData;
+        return this.pData;
     } 
 
     /**
@@ -82,7 +82,7 @@ public class Prestito {
      * @return valore di pagato
      */
     public boolean getPagato(){
-        return pagato;
+        return this.pagato;
     }
 
     /**
@@ -90,7 +90,7 @@ public class Prestito {
      * @param f nuovo film
      */
     public void setFilm(Film f){
-        film = f;
+        this.film = f;
     }
 
     /**
@@ -98,7 +98,7 @@ public class Prestito {
      * @param r nnuovo utente
      */
     public void setUtente(Utente r){
-        utente = r;
+        this.utente = r;
     }
 
     /**
@@ -106,7 +106,7 @@ public class Prestito {
      * @param d nuova data
      */
     public void setDataPrestito(LocalDate d){
-        pData = d;
+        this.pData = d;
     }
 
     /**
@@ -114,7 +114,7 @@ public class Prestito {
      * @param p nuovo valore di pagato
      */
     public void setPagato(boolean p){
-        pagato = p;
+        this.pagato = p;
     }
 
     /* Metodi privati */

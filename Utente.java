@@ -11,8 +11,8 @@ public class Utente extends Persona {
     /**
      * costruttore
      */
-    public Utente(String nome, String cognome, String password, String email, String indirizzo, String n_telefono){
-        super(nome, cognome, password, email, indirizzo, n_telefono);
+    public Utente(String nome, String cognome, String password, String email, String indirizzo, String telefono){
+        super(nome, cognome, password, email, indirizzo, telefono);
         Prestiti = new ArrayList<>();
     }
 
@@ -42,7 +42,7 @@ public class Utente extends Persona {
           aggiornaEmailUtente(decisione, sc);
           aggiornaPassword(decisione, sc);
           aggiornaIndirizzoUtente(decisione,reader);
-          aggiornaN_TelefonoUtente(decisione, sc);
+          aggiornaTelefonoUtente(decisione, sc);
           if(decisione.equals("0")){
             j=0;
           }
@@ -57,7 +57,7 @@ public class Utente extends Persona {
      */
     @Override
     public String toString(){
-        return (getNome()+";"+getCognome()+";"+getPassword()+";"+getEmail()+";"+getIndirizzo()+";"+getN_Telefono());
+        return (getNome() + ";" + getCognome() + ";" + getPassword() + ";" + getEmail() + ";" + getIndirizzo() + ";" + getTelefono());
     }
 
     /**
@@ -113,17 +113,17 @@ public class Utente extends Persona {
      * @param decisione scelta dell'utente
      * @param sc scanner
      */
-    private void aggiornaN_TelefonoUtente(String decisione, Scanner sc){
+    private void aggiornaTelefonoUtente(String decisione, Scanner sc){
         if (decisione.equals("4"))
         {
             System.out.println("\nInserisci il nuovo numero di telefono: ");
-            boolean n_telefono_valido = false;
-            while (!n_telefono_valido) {
-                String n_telefono = sc.next();
+            boolean telefono_valido = false;
+            while (!telefono_valido) {
+                String telefono = sc.next();
                 sc.nextLine();
-                if (n_telefono.length() > 8 && n_telefono.length() < 15 && n_telefono.matches("^[0-9]+$")){
-                    n_telefono_valido = true;
-                    setN_Telefono(n_telefono);
+                if (telefono.length() > 8 && telefono.length() < 15 && telefono.matches("^[0-9]+$")){
+                    telefono_valido = true;
+                    setTelefono(telefono);
                 }
                 else {
                     System.out.println("Numero di telefono non valido\nInserisci numero di telefono");

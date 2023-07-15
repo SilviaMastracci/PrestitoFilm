@@ -54,8 +54,8 @@ public class PrestitoFilm {
                 String password = splitdati[2];
                 String email = splitdati[3];
                 String indirizzo = splitdati[4];
-                String n_telefono = splitdati[5];
-                Utente utente = new Utente(nome, cognome, password, email, indirizzo, n_telefono);
+                String telefono = splitdati[5];
+                Utente utente = new Utente(nome, cognome, password, email, indirizzo, telefono);
                 elencoUtenti.add(utente);
             }
 
@@ -127,15 +127,15 @@ public class PrestitoFilm {
             System.out.println("Inserisci indirizzo");
             String indirizzo = input.nextLine();
             System.out.println("Inserisci numero di telefono");
-            String n_telefono = " " ;
-            boolean n_telefono_valido = false;
+            String telefono = " " ;
+            boolean telefono_valido = false;
 
-            while (!n_telefono_valido) {
-                n_telefono = input.next();
+            while (!telefono_valido) {
+                telefono = input.next();
                 input.nextLine();
 
-                if (n_telefono.length() > 8 && n_telefono.length() < 15 && n_telefono.matches("^[0-9]+$")){
-                    n_telefono_valido = true;
+                if (telefono.length() > 8 && telefono.length() < 15 && telefono.matches("^[0-9]+$")){
+                    telefono_valido = true;
                 }
                 else {
                     
@@ -143,7 +143,7 @@ public class PrestitoFilm {
                 }
             }
 
-            Utente utente = new Utente(nome, cognome, password, email, indirizzo, n_telefono);
+            Utente utente = new Utente(nome, cognome, password, email, indirizzo, telefono);
             utenteMain = utente;
             elencoUtenti.add(utente);
             System.out.println("Benvenuto!");
