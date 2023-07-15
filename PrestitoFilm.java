@@ -5,12 +5,6 @@ import java.time.LocalDate;
 
 public class PrestitoFilm {
     //Dichiarazioni variabili utilizzate nel programma
-    static LocalDate dataOdierna = LocalDate.now();                                                          //La variabile assume il valore della data odierna grazie al metodo LocalDate.now()
-    static Utente utenteMain = null;                                                                         //Inizializzazione variabile utenteMain, i valori gli saranno dati dopo il caricamento del file e relativo login 
-    static ArrayList<Utente> elencoUtenti = new ArrayList<Utente>();                                         //ArrayList contenente gli che verrano caricati da file    
-    static HashMap<String, String> coppiePrestiti = new HashMap<String, String>();                           //HashMap contenente le coppie utente/film richiesto che verrano caricati da file
-    static ArrayList<Prestito> elencoPrestiti = new ArrayList<>();                                           //ArrayList contenente i prestiti che verrano caricati da file
-    static ArrayList<Prestito> prestitiDaRimuovere = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
     static int scelta;
 
@@ -20,8 +14,8 @@ public class PrestitoFilm {
     private static ArrayList<Film> caricamentoFilm() {
         ArrayList<Film> elencoFilm = new ArrayList<Film>();
         try {
-
-            File importFilm = new File("ElencoFilm.txt");
+        
+            File importFilm = new File("PrestitoFilm\\ElencoFilm.txt");
             Scanner myReader = new Scanner(importFilm);
 
             while (myReader.hasNextLine()) {
@@ -46,9 +40,9 @@ public class PrestitoFilm {
     }
 
     //Import dell'elenco degli utenti da file .txt, la stringa viene elaborata cosi da creare le istanze dei vari utenti ed aggiungerli all'elenco di utenti. La lista sarà utile per convalidare le credenziali di accesso
-    private static void caricamentoUtenti() {
+    private static void caricamentoUtenti(ArrayList<Utente> elencoUtenti) {
         try {
-            File importUtenti = new File("ElencoUtenti.txt");
+            File importUtenti = new File("PrestitoFilm\\ElencoUtenti.txt");
             Scanner myReader = new Scanner(importUtenti);
 
             while (myReader.hasNextLine()) {
@@ -72,9 +66,9 @@ public class PrestitoFilm {
     }
 
      //Import delle coppie utente id film richiesto / data di prestito e lo stato del pagamento, verranno poi utilizzate per la effettiva creazione di un elenco dei prestiti
-    private static void caricamentoPrestiti(ArrayList<Film> elencoFilm) {
+    private static void caricamentoPrestiti(ArrayList<Film> elencoFilm, ArrayList<Utente> elencoUtenti, ArrayList<Prestito> elencoPrestiti) {
         try {
-            File importPrestiti = new File("ElencoPrestiti.txt");
+            File importPrestiti = new File("PrestitoFilm\\ElencoPrestiti.txt");
             Scanner myReader = new Scanner(importPrestiti);
 
             while (myReader.hasNextLine()) {
@@ -111,7 +105,9 @@ public class PrestitoFilm {
    
 
     //Registrazione o login utente con controllo credenziali. Nel caso di login si ha anche la creazione dell'elenco prestiti dell'utente
-    private static void accessoUtente() {
+    private static Utente accessoUtente(ArrayList<Utente> elencoUtenti, ArrayList<Prestito> elencoPrestiti) {
+        Utente utenteMain = null;
+
         System.out.println("Digitare:\n1 per registrarsi\n2 per il login");
         scelta = input.nextInt();
         input.nextLine();
@@ -142,7 +138,7 @@ public class PrestitoFilm {
                 }
                 else {
                     
-                    System.out.println("Numero di telefono non valido\nInserisci numero di telefono");
+                    System.out.println("Numero di telefono non valido!\nInserisci numero di telefono");
                 }
             }
 
@@ -183,11 +179,13 @@ public class PrestitoFilm {
                         
             }
         }
+
+        return utenteMain;
     }
     
 
     // Se presenti stampa i prestiti dell'utente
-    private static void printPrestiti(){
+    private static void printPrestiti(Utente utenteMain){
         ArrayList<Prestito> Prestiti=utenteMain.getPrestiti();
         
         if (!Prestiti.isEmpty()){
@@ -216,7 +214,7 @@ public class PrestitoFilm {
     }
 
     //Ricerca mediante titolo con possibilità di richiedere prestito
-    private static void cercaTitolo(ArrayList<Film> elencoFilm) {
+    private static void cercaTitolo(ArrayList<Film> elencoFilm, Utente utenteMain, ArrayList<Prestito> elencoPrestiti, HashMap<String, String> coppiePrestiti) {
         System.out.println("\n");
         System.out.println("Inserisci l'id del film che desideri cercare\nOppure digita exit per uscire");
         boolean titolo_corretto = false;
@@ -295,13 +293,13 @@ public class PrestitoFilm {
             System.out.println("\n");
             System.out.println("Inserisci uno dei registi della lista ");
             System.out.println("\n");
-            String Regista = input.nextLine();
-            Regista = Regista.toLowerCase();
+            String regista = input.nextLine();
+            regista = regista.toLowerCase();
 
             boolean filmTrovati = false; 
 
             for (Film film : elencoFilm) {
-                if (Regista.equals(film.getRegista())) {
+                if (regista.equals(film.getRegista())) {
                     System.out.println("\n");
                     String info = film.getInfo();     
                     System.out.println(info);
@@ -358,7 +356,7 @@ public class PrestitoFilm {
     }
     
     //Restituzione film con relativa rimozione dalle strutture dati
-    private static void restituisciFilm() {
+    private static void restituisciFilm(ArrayList<Prestito> elencoPrestiti, Utente utenteMain, HashMap<String, String> coppiePrestiti, ArrayList<Prestito> prestitiDaRimuovere) {
         boolean id_corretto = false;
         while (!id_corretto) {
             if (utenteMain.titoliPrestiti() == true) {
@@ -386,9 +384,9 @@ public class PrestitoFilm {
     }
 
     //Aggiornamento dati utente
-    private static void aggiornaDatiUtenti() throws IOException {
+    private static void aggiornaDatiUtenti(Utente utenteMain) throws IOException {
         System.out.println(utenteMain.printInfo());
-        printPrestiti();
+        printPrestiti(utenteMain);
         System.out.println("Questi sono i tuoi dati attuali, sei sicuro di volerli aggiornare? \n1: Si\n2: No\n");
         scelta = input.nextInt();
         input.nextLine();
@@ -416,7 +414,7 @@ public class PrestitoFilm {
     }
 
     //Salvataggio su file dell'elenco degli utenti e dei relativi attributi
-    private static void salvataggioUtenti() {
+    private static void salvataggioUtenti(ArrayList<Utente> elencoUtenti) {
         try {
             FileWriter myWriter = new FileWriter("ElencoUtenti.txt");
             for (Utente utente : elencoUtenti) {
@@ -430,7 +428,7 @@ public class PrestitoFilm {
     }
 
     //Salvataggio su file dell'elenco delle prenotazioni
-    private static void salvataggioPrenotazioni() {
+    private static void salvataggioPrenotazioni(HashMap<String, String> coppiePrestiti) {
         try {
             FileWriter myWriter = new FileWriter("ElencoPrestiti.txt");
             for (String i : coppiePrestiti.keySet()) {
@@ -446,15 +444,20 @@ public class PrestitoFilm {
     //Corpo del programma in cui si richiamano le funzioni definite precedentemente
     public static void main(String[] args) throws IOException {
         ArrayList<Film> elencoFilm = caricamentoFilm();
-        caricamentoUtenti();
-        caricamentoPrestiti(elencoFilm);
-        accessoUtente();
+        ArrayList<Utente> elencoUtenti = new ArrayList<Utente>();
+        ArrayList<Prestito> elencoPrestiti = new ArrayList<>();
+        ArrayList<Prestito> prestitiDaRimuovere = new ArrayList<>();
+        HashMap<String, String> coppiePrestiti = new HashMap<String, String>();
+        Utente utenteMain = null;
+        caricamentoUtenti(elencoUtenti);
+        caricamentoPrestiti(elencoFilm, elencoUtenti, elencoPrestiti);
+        utenteMain = accessoUtente(elencoUtenti, elencoPrestiti);
         for (Prestito z : utenteMain.getPrestiti()) {
             z.getFilm().getID();
         }
 
         while (true) {
-            System.out.println("\nDigitare 1 per l'elenco dei film\nDigitare 2 per effettuare una ricerca per titolo");
+            System.out.println("\nDigitare 1 per l'elenco dei film\nDigitare 2 per effettuare una ricerca per titolo e prendere in prestito un film");
             System.out.println("Digitare 3 per effettuare una ricerca per Regista\nDigitare 4 per effettuare una ricerca per Genere");
             System.out.println("Digitare 5 per restituire un film\nDigitare 6 per vedere i propri dati, i film presi in prestito e aggiornare i dati");
             System.out.println("Digitare 7 per uscire\n");
@@ -466,7 +469,7 @@ public class PrestitoFilm {
             }
 
             if (scelta == 2) {
-                cercaTitolo(elencoFilm);
+                cercaTitolo(elencoFilm, utenteMain, elencoPrestiti, coppiePrestiti);
             }
 
             if (scelta == 3) {
@@ -478,11 +481,11 @@ public class PrestitoFilm {
             }
 
             if (scelta == 5) {
-                restituisciFilm();
+                restituisciFilm(elencoPrestiti, utenteMain, coppiePrestiti, prestitiDaRimuovere);
             }
 
             if (scelta == 6) {
-                aggiornaDatiUtenti();
+                aggiornaDatiUtenti(utenteMain);
             }
 
             /*Uscita dal programma*/
@@ -492,7 +495,7 @@ public class PrestitoFilm {
             }
         }
         salvataggioFilm(elencoFilm);
-        salvataggioPrenotazioni();
-        salvataggioUtenti();
+        salvataggioPrenotazioni(coppiePrestiti);
+        salvataggioUtenti(elencoUtenti);
     }
 }

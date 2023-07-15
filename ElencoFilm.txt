@@ -1,5 +1,7 @@
-1,Barbie,fantasy,Ryan Gosling,true
-2,Harry Potter,fantasy,JKR,false
-3,Spiderman,fantasy,Sam Raimi,false
-4,Le Pagine Della Nostra Vita,romantico,Nick Cassavetes,false
-5,Il nome della rosa,storico,Annaud,true
+1,Barbie,fantasy,greta gerwig,false
+2,Harry Potter,fantasy,jkr,false
+3,Spiderman,fantasy,sam raimi,false
+4,Le Pagine Della Nostra Vita,romantico,nick cassavetes,false
+5,Il nome della rosa,storico,annaud,false
+6,Alice in Wonderland,fantasy,tim burton,false
+7,Attacco al Potere 1,azione,antoine fuqua,false
