@@ -57,7 +57,7 @@ public class Utente extends Persona {
      */
     @Override
     public String toString(){
-        return (getNome()+","+getCognome()+","+getPassword()+","+getEmail()+","+getIndirizzo()+","+getN_Telefono());
+        return (getNome()+";"+getCognome()+";"+getPassword()+";"+getEmail()+";"+getIndirizzo()+";"+getN_Telefono());
     }
 
     /**

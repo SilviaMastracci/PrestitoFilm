@@ -20,14 +20,15 @@ public class PrestitoFilm {
 
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                String[] splitdati = data.split(","); //Array di string
+                String[] splitdati = data.split(";"); //Array di string
                 String id = splitdati[0];
                 String titolo = splitdati[1];
                 String genere = splitdati[2];
-                String Regista = splitdati[3];
-                String StringinPrestito = splitdati[4];
+                String regista = splitdati[3];
+                String descrizione = splitdati[4];
+                String StringinPrestito = splitdati[5];
                 boolean inPrestito = Boolean.parseBoolean(StringinPrestito);
-                Film film = new Film(id, titolo, genere, Regista, inPrestito);
+                Film film = new Film(id, titolo, genere, regista, descrizione, inPrestito);
                 elencoFilm.add(film);
             }
 
@@ -47,7 +48,7 @@ public class PrestitoFilm {
 
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                String[] splitdati = data.split(",");
+                String[] splitdati = data.split(";");
                 String nome = splitdati[0];
                 String cognome = splitdati[1];
                 String password = splitdati[2];
@@ -73,19 +74,19 @@ public class PrestitoFilm {
 
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                String[] splitdati = data.split(",");
+                String[] splitdati = data.split(";");
                 String email = splitdati[0];
                 String idFilm = splitdati[1];
                 String stringdata = splitdati[2];
                 LocalDate dataPrestito = LocalDate.parse(stringdata);
                 String stringpagato = splitdati[3];
                 boolean pagato = Boolean.parseBoolean(stringpagato);
-                String coppiePrestiti=email + "," + idFilm;
+                String coppiePrestiti = email + ";" + idFilm;
 
                 for (Utente f : elencoUtenti) {
                     if (f.getEmail().equals(email)) {
                         for (Film y : elencoFilm) {
-                            if ((f.getEmail() + "," + y.getID()).equals(coppiePrestiti)) {
+                            if ((f.getEmail() + ";" + y.getID()).equals(coppiePrestiti)) {
                                 Prestito p = new Prestito(f, y, dataPrestito, pagato);
                                 elencoPrestiti.add(p);
                                 
@@ -189,7 +190,7 @@ public class PrestitoFilm {
         ArrayList<Prestito> Prestiti=utenteMain.getPrestiti();
         
         if (!Prestiti.isEmpty()){
-            System.out.println("\n I film prenotati sono: ");
+            System.out.println("\nI film prenotati sono: ");
             for (int i = 0; i < Prestiti.size(); i++){
                 String info=Prestiti.get(i).getFilm().getInfo();
                 System.out.print(info);
@@ -242,7 +243,7 @@ public class PrestitoFilm {
                     if (scelta == 1) {
                         if (film.getStatoPrestito() == false) {
                             elencoPrestiti.add(film.faiPrestito(utenteMain));
-                            coppiePrestiti.put(utenteMain.getEmail() + "," + film.getID(), film.returnPrestito(utenteMain).getDataPrestito() + "," + film.returnPrestito(utenteMain).getPagato());
+                            coppiePrestiti.put(utenteMain.getEmail() + ";" + film.getID(), film.returnPrestito(utenteMain).getDataPrestito() + ";" + film.returnPrestito(utenteMain).getPagato());
                             filmTrovato = true;
                             titolo_corretto = true;
                         } 
@@ -256,7 +257,7 @@ public class PrestitoFilm {
                     }
 
                     if (scelta == 2) {
-                        String info=film.getInfo();
+                        String info=film.getDescrizione();
                         System.out.println(info);
                         filmTrovato = true;
                         titolo_corretto = true;
@@ -276,9 +277,9 @@ public class PrestitoFilm {
 
     //Ricerca mediante Regista
     private static void cercaRegista(ArrayList<Film> elencoFilm) {
-        boolean Regista_corretto = false;
+        boolean regista_corretto = false;
 
-        while (!Regista_corretto) {
+        while (!regista_corretto) {
             ArrayList<String> elencoRegisti = new ArrayList<String>();
             System.out.println("\n");
 
@@ -312,7 +313,7 @@ public class PrestitoFilm {
                 System.out.println("Nessun film trovato per il regista selezionato.");
             }
 
-            Regista_corretto = true;
+            regista_corretto = true;
         }
     }
 
@@ -372,7 +373,7 @@ public class PrestitoFilm {
                         if (p.getFilm().getID().equals(id)) {
                             String restituzioneFilm= p.getFilm().restituisciFilm(utenteMain, p);
                             System.out.println(restituzioneFilm);
-                            coppiePrestiti.remove(utenteMain.getEmail() + "," + p.getFilm().getID());
+                            coppiePrestiti.remove(utenteMain.getEmail() + ";" + p.getFilm().getID());
                             prestitiDaRimuovere.add(p);
                         }
                     }
@@ -432,7 +433,7 @@ public class PrestitoFilm {
         try {
             FileWriter myWriter = new FileWriter("ElencoPrestiti.txt");
             for (String i : coppiePrestiti.keySet()) {
-                myWriter.write(i + "," + coppiePrestiti.get(i) + "\n");
+                myWriter.write(i + ";" + coppiePrestiti.get(i) + "\n");
             }
             myWriter.close();
         } catch (IOException e) {

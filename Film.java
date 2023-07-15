@@ -8,6 +8,7 @@ public class Film {
     private String Titolo;
     private String Genere;
     private String Regista;
+    private String Descrizione;
     private boolean inPrestito;
 
     /**
@@ -15,20 +16,22 @@ public class Film {
      * @param t Titolo del film
      * @param g Genere del film
      * @param r Regista del film 
+     * @param d Descrizione del film
      * @param inprestito Stato del film
      */
-    public Film(String id, String t, String g, String r, boolean inprestito){
+    public Film(String id, String t, String g, String r, String d, boolean inprestito){
         ID = id;
         Titolo = t;
         Genere = g;
         Regista = r;
+        Descrizione = d;
         inPrestito = inprestito;
     }   
     
     /* Getter e Setter */
 
     /*
-      * Stampa le informazioni generali del film
+      * Ritorna le informazioni generali del film
       */
     public String getInfo(){
         return Titolo + "\t" + Regista + "\t" + Genere;
@@ -52,10 +55,18 @@ public class Film {
 
     /**
      * Ritorna il regista 
-     * @return valore di autore
+     * @return valore di regista
      */
     public String getRegista(){
         return Regista;
+    }
+
+    /**
+     * Ritorna la descrizione
+     * @return valore di descrizione
+     */
+    public String getDescrizione(){
+        return Descrizione;
     }
 
     /**
@@ -96,6 +107,14 @@ public class Film {
      */
     public void setRegista(String r){
         Regista = r;
+    }
+
+    /**
+     * Cambia la descrizione del film
+     * @param d
+     */
+    public void setDescrizione(String d){
+        Descrizione = d;
     }
 
     /**
@@ -157,7 +176,7 @@ public class Film {
      */
     @Override
     public String toString(){
-        return(ID+","+Titolo+","+Genere+","+Regista+","+inPrestito);
+        return(ID+";"+Titolo+";"+Genere+";"+Regista+";"+Descrizione+";"+inPrestito);
     }
 }
 
