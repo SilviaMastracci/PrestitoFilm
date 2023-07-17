@@ -1,0 +1,11 @@
+@startuml cercaRegista
+Utente->PrestitoFilm: main()
+PrestitoFilm->PrestitoFilm: cercaRegista(elencoFilm)
+Utente->PrestitoFilm: Fornisci il nome del regista da cercare
+PrestitoFilm->Utente: Verifica se l'utente ha film in prestito
+Utente->PrestitoFilm: Stampa l'elenco dei registi disponibili
+Utente->PrestitoFilm: Seleziona un regista
+PrestitoFilm->Film: Verifica se il regista corrisponde a un film nell'elenco
+Utente->PrestitoFilm: Stampa informazioni sui film corrispondenti
+Utente->PrestitoFilm: Altre interazioni...
+@enduml

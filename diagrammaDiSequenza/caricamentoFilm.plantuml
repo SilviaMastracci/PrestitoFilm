@@ -1,0 +1,11 @@
+@startuml caricamentoFilm
+Utente->PrestitoFilm: main()
+PrestitoFilm->PrestitoFilm: caricamentoFilm()
+PrestitoFilm->File: Apri "ElencoFilm.txt"
+File->PrestitoFilm: Leggi riga del file
+PrestitoFilm->Film: Creazione istanza di Film
+Film->PrestitoFilm: Restituisci istanza di Film
+PrestitoFilm->PrestitoFilm: Aggiungi Film all'elencoFilm
+PrestitoFilm->File: Chiudi file
+Utente->PrestitoFilm: Altre interazioni...
+@enduml

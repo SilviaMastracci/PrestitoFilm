@@ -1,0 +1,15 @@
+@startuml restituisciFilm
+Utente->PrestitoFilm: main()
+PrestitoFilm->PrestitoFilm: restituisciFilm(elencoPrestiti, utenteMain, coppiePrestiti, prestitiDaRimuovere)
+Utente->PrestitoFilm: Fornisci ID del film da restituire
+PrestitoFilm->Utente: Verifica se l'utente ha film in prestito
+Utente->PrestitoFilm: Stampa elenco dei film in prestito dell'utente
+Utente->PrestitoFilm: Fornisci ID del film da restituire
+PrestitoFilm->Prestito: Verifica corrispondenza dell'ID del film con i prestiti dell'utente
+Prestito->Film: Restituisci film in prestito
+Film->Utente: Restituisci messaggio di conferma restituzione
+Prestito->Utente: Rimuovi il prestito dall'utente
+PrestitoFilm->HashMap: Rimuovi l'elemento delle coppie di prestiti corrispondente
+PrestitoFilm->PrestitoFilm: Aggiungi il prestito alla lista prestitiDaRimuovere
+Utente->PrestitoFilm: Altre interazioni con l'applicazione (menu, input, ecc.)
+@enduml

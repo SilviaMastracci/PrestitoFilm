@@ -1,0 +1,314 @@
+@startuml DiagrammaDiSequenza
+public class Film {
+    /**
+     * Imformazioni del libro
+     */
+    private String ID;
+    private String titolo;
+    private String genere;
+    private String regista;
+    private String descrizione;
+    private boolean inPrestito;
+
+    /**
+     * @param id ID del film
+     * @param t Titolo del film
+     * @param g Genere del film
+     * @param r Regista del film 
+     * @param d Descrizione del film
+     * @param inprestito Stato del film
+     */
+    public Film(String id, String t, String g, String r, String d, boolean inprestito){
+        this.ID = id;
+        this.titolo = t;
+        this.genere = g;
+        this.regista = r;
+        this.descrizione = d;
+        this.inPrestito = inprestito;
+    }   
+    
+    /* Getter e Setter */
+
+    /*
+      * Ritorna le informazioni generali del film
+      */
+    public String getInfo(){
+        return this.titolo + "\t" + this.regista + "\t" + this.genere;
+        
+    }
+
+    /**
+     * Ritorna il titolo del film
+     */
+    public String getTitolo(){
+        return this.titolo;
+    }
+
+    /**
+     * Ritorna il genere del libro
+     * @return valore di Genere
+     */
+    public String getGenere(){
+        return this.genere;
+    }
+
+    /**
+     * Ritorna il regista 
+     * @return valore di regista
+     */
+    public String getRegista(){
+        return this.regista;
+    }
+
+    /**
+     * Ritorna la descrizione
+     * @return valore di descrizione
+     */
+    public String getDescrizione(){
+        return this.descrizione;
+    }
+
+    /**
+     * Ritorna lo stato del prestito
+     * @return valore di inPrestito
+     */
+    public boolean getStatoPrestito(){
+        return this.inPrestito;
+    }
+
+    /**
+     * Ritorna l'ID del titolo
+     * @return  valore di ID
+     */
+    public String getID(){
+        return this.ID;
+    }
+
+    /**
+     * Cambia il titolo del film
+     * @param t nuovo titolo da dare al film
+     */
+    public void setTitolo(String t){
+        this.titolo = t;
+    }
+
+    /**
+     * Camcia il genere del film
+     * @param g nuovo genere da dare al libro
+     */
+    public void setGenere(String g){
+        this.genere = g;
+    }
+
+    /**
+     * Cambia il regista del film
+     * @param r nuovo regista da assegnare al film
+     */
+    public void setRegista(String r){
+        this.regista = r;
+    }
+
+    /**
+     * Cambia la descrizione del film
+     * @param d
+     */
+    public void setDescrizione(String d){
+        this.descrizione = d;
+    }
+
+    /**
+     * Cambia lo stato del prestito
+     * @param s nuovo valore di inprestito
+     */
+    public void setStatoPrestito(boolean s){
+        this.inPrestito = s;
+    }
+
+    /**
+     * Cambia l'id del libro 
+     * @param i nuovo id da dare al regsitro  
+     */
+    public void setID(String i){
+        this.ID = i;
+    }
+
+    /**
+     * Prende il film in prestito
+     * @param utente utente che prende in prestito il film
+     * @return valore di prestito per usarlo nel main
+     */
+    public Prestito faiPrestito(Utente utente){
+        LocalDate pData = LocalDate.now();
+        setStatoPrestito(true);
+        System.out.println("\nIl libro " + titolo + " è stato preso in prestito da " + utente.getNome());
+        Prestito prestito = new Prestito(utente, this, pData, false);
+        utente.addPrestito(prestito);
+        return prestito;
+    }
+
+    /**
+     * Usato per accedere alla data senza richiamare addPrestito presente nella funzione sopra
+     * @param utente utente che prende in prestito il film
+     * @return valore di prestito
+     */
+    public Prestito returnPrestito(Utente utente){
+        LocalDate pData = LocalDate.now();
+        Prestito prestito = new Prestito(utente, this, pData, false);
+        return prestito;
+    }
+
+    /**
+     * Restituisce il film
+     * @param utente utente che restituisce il libro
+     * @param prestito il prestito che viene estinto 
+     */
+    public String restituisciFilm(Utente utente, Prestito prestito){
+        prestito.pagaPenale();
+        prestito.getFilm().setStatoPrestito(false);
+        utente.removePrestito(prestito);
+        return "\nIl film " + prestito.getFilm().getTitolo() + " è stato restituito con successo da " + utente.getNome();
+    }
+
+    /**
+     * Return dei dati dei film, è usato nel salvataggio dei film prima della chiusura del programma
+     * @return Stringa con i dati del film
+     */
+    @Override
+    public String toString(){
+        return this.ID + ";" + this.titolo + ";" + this.genere + ";" + this.regista + ";" + this.descrizione + ";" + this.inPrestito;
+    }
+}
+
+page
+public class Persona {
+    /**
+     * Inforamzioni generali di una persona
+     */
+    private String nome;
+    private String cognome;
+    private String password;
+    private String email;
+    private String indirizzo;
+    private String telefono;
+
+    /**
+     * @param nome nome della persona
+     * @param cognome cognome della persona
+     * @param password password della persona
+     * @param email email della persona
+     * @param indirizzo indirizzo della persona
+     * @param telefono numero di telefono della persona
+     */
+    public Persona(String nome, String cognome, String password, String email, String indirizzo, String telefono){
+        this.nome = nome;
+        this.cognome = cognome;
+        this.password = password;
+        this.email = email;
+        this.indirizzo = indirizzo;
+        this.telefono = telefono;
+    }
+
+    /**
+     * Stampa le infromazioni generali della persona
+     */
+    public String printInfo(){
+        return "-----------------------------------------" + "\nI tuoi dati sono i seguenti: \n" + "Nome e cognome: " + nome + " " + cognome + "\n" + "Email: " + email + "\n" + "Indirizzo: " + indirizzo + "\n" + "Numero di telefono: " + telefono + "\n";
+    }
+
+    /**
+     * Cambia il nome della persona
+     * @param n nuovo nome
+     */
+    public void setNome(String n){
+        this.nome = n;
+    }
+
+    /**
+     * Cambia il cognome della persona
+     * @param c nuovo cognome
+     */
+    public void setCognome(String c){
+        this.cognome = c;
+    }
+    
+    /**
+     * Cambia la password della persona 
+     * @param p nuova password
+     */
+    public void setPassword(String p){
+        this.password = p;
+    }
+
+    /**
+     * Cambia l'email della persona 
+     * @param e nuova email
+     */
+    public void setEmail(String e){
+        this.email = e;
+    }
+
+    /**
+     * Cambia l'indirzzo della persona
+     * @param a nuovo indirizzo
+     */
+    public void setIndirizzo(String a){
+        this.indirizzo = a;
+    }
+
+    /**
+     * Cambia il numero di telefono della persona
+     * @param t nuovo numero di telefono
+     */
+    public void setTelefono(String t){
+        this.telefono = t;
+    }
+
+    /**
+     * Ritorna il nome della persona
+     * @return vslore di nome
+     */
+    public String getNome(){
+        return this.nome;
+    }
+
+    /**
+     * Ritorna il cognome della persona
+     */
+    public String getCognome(){
+        return this.cognome;
+    }
+
+    /**
+     * Return la password della persona
+     * @return valore di password
+     */
+    public String getPassword(){
+        return this.password;
+    }
+
+    /**
+     * Ritorna l'eamil della persona
+     * @return valore di email
+     */
+    public String getEmail(){
+        return this.email;
+    }
+
+    /**
+     * Ritorna l'indirizzo della persona
+     * @return valore di indirizzo 
+     */
+    public String getIndirizzo(){
+        return this.indirizzo;
+    }
+
+    /**
+     * Ritorna il numero di telefono della persona
+     * @return valore di telefono
+     */
+    public String getTelefono(){
+        return this.telefono;
+    }
+}
+
+@enduml

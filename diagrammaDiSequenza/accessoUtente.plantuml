@@ -1,0 +1,11 @@
+@startuml accessoUtente
+Utente->PrestitoFilm: main()
+PrestitoFilm->PrestitoFilm: accessoUtente(elencoUtenti, elencoPrestiti)
+Utente->PrestitoFilm: Fornisci scelta di registrazione o login
+Utente->PrestitoFilm: Se scelta è registrazione, fornisci dati personali
+Utente->PrestitoFilm: Se scelta è login, fornisci email e password
+PrestitoFilm->Utente: Verifica credenziali
+Utente->PrestitoFilm: Restituisci istanza di Utente
+PrestitoFilm->PrestitoFilm: Aggiungi Utente principale
+Utente->PrestitoFilm: Altre interazioni...
+@enduml

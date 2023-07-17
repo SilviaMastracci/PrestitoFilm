@@ -1,0 +1,20 @@
+@startuml cercaTitolo
+
+Utente->PrestitoFilm: main()
+PrestitoFilm->PrestitoFilm: cercaTitolo(elencoFilm, utenteMain, elencoPrestiti, coppiePrestiti)
+Utente->PrestitoFilm: Fornisci l'ID del film da cercare
+PrestitoFilm->Utente: Verifica se l'utente ha film in prestito
+Utente->PrestitoFilm: Stampa l'elenco dei film disponibili
+Utente->PrestitoFilm: Fornisci scelta tra prendere in prestito o visualizzare le informazioni del film
+PrestitoFilm->Film: Verifica se l'ID del film corrisponde a un film nell'elenco
+Utente->PrestitoFilm: Seleziona un'opzione
+PrestitoFilm->Film: Se l'opzione è prendere in prestito, controlla lo stato del prestito
+Utente->PrestitoFilm: Prendi in prestito il film
+PrestitoFilm->Prestito: Crea un oggetto Prestito
+Prestito->Film: Aggiorna lo stato del film in prestito
+Prestito->Utente: Aggiungi il prestito all'utente
+Utente->PrestitoFilm: Aggiungi il prestito all'elencoPrestiti
+PrestitoFilm->HashMap: Aggiorna le coppie di prestiti
+Utente->PrestitoFilm: Altre interazioni...
+
+@enduml

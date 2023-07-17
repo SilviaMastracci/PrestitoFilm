@@ -1,0 +1,11 @@
+@startuml caricamentoPrestiti
+Utente->PrestitoFilm: main()
+PrestitoFilm->PrestitoFilm: caricamentoPrestiti(elencoFilm, elencoUtenti, elencoPrestiti)
+PrestitoFilm->File: Apri "ElencoPrestiti.txt"
+File->PrestitoFilm: Leggi riga del file
+PrestitoFilm->Prestito: Creazione istanza di Prestito
+Prestito->PrestitoFilm: Restituisci istanza di Prestito
+PrestitoFilm->PrestitoFilm: Aggiungi Prestito all'elencoPrestiti
+PrestitoFilm->File: Chiudi file
+Utente->PrestitoFilm: Altre interazioni...
+@enduml

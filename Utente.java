@@ -28,7 +28,6 @@ public class Utente extends Persona {
     @Override
     public String printInfo(){
         return super.printInfo();
-        
     }
 
     /**
@@ -54,6 +53,8 @@ public class Utente extends Persona {
           }
         }
         System.out.println("\nDati aggiornati con successo");
+        sc.close();
+        reader.close();
     }
 
     
