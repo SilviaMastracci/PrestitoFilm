@@ -15,7 +15,7 @@ public class PrestitoFilm {
         ArrayList<Film> elencoFilm = new ArrayList<Film>();
         try {
         
-            File importFilm = new File("ElencoFilm.txt");
+            File importFilm = new File("PrestitoFilm\\ElencoFilm.txt");
             Scanner myReader = new Scanner(importFilm);
 
             while (myReader.hasNextLine()) {
@@ -43,7 +43,7 @@ public class PrestitoFilm {
     //Import dell'elenco degli utenti da file .txt, la stringa viene elaborata cosi da creare le istanze dei vari utenti ed aggiungerli all'elenco di utenti. La lista sarà utile per convalidare le credenziali di accesso
     private static void caricamentoUtenti(ArrayList<Utente> elencoUtenti) {
         try {
-            File importUtenti = new File("ElencoUtenti.txt");
+            File importUtenti = new File("PrestitoFilm\\ElencoUtenti.txt");
             Scanner myReader = new Scanner(importUtenti);
 
             while (myReader.hasNextLine()) {
@@ -69,7 +69,7 @@ public class PrestitoFilm {
      //Import delle coppie utente id film richiesto / data di prestito e lo stato del pagamento, verranno poi utilizzate per la effettiva creazione di un elenco dei prestiti
     private static void caricamentoPrestiti(ArrayList<Film> elencoFilm, ArrayList<Utente> elencoUtenti, ArrayList<Prestito> elencoPrestiti) {
         try {
-            File importPrestiti = new File("ElencoPrestiti.txt");
+            File importPrestiti = new File("PrestitoFilm\\ElencoPrestiti.txt");
             Scanner myReader = new Scanner(importPrestiti);
 
             while (myReader.hasNextLine()) {
@@ -403,7 +403,7 @@ public class PrestitoFilm {
     //Salvataggio su file dell'elenco dei film
     private static void salvataggioFilm(ArrayList<Film> elencoFilm) {
         try {
-            FileWriter myWriter = new FileWriter("PrestitoFilm\\ElencoFilm.txt");
+            FileWriter myWriter = new FileWriter("ElencoFilm.txt");
             for (Film film : elencoFilm) {
                 myWriter.write(film.toString() + "\n");
             }
@@ -417,7 +417,7 @@ public class PrestitoFilm {
     //Salvataggio su file dell'elenco degli utenti e dei relativi attributi
     private static void salvataggioUtenti(ArrayList<Utente> elencoUtenti) {
         try {
-            FileWriter myWriter = new FileWriter("PrestitoFilm\\ElencoUtenti.txt");
+            FileWriter myWriter = new FileWriter("ElencoUtenti.txt");
             for (Utente utente : elencoUtenti) {
                 myWriter.write(utente.toString() + "\n");
             }
@@ -431,7 +431,7 @@ public class PrestitoFilm {
     //Salvataggio su file dell'elenco delle prenotazioni
     private static void salvataggioPrenotazioni(HashMap<String, String> coppiePrestiti) {
         try {
-            FileWriter myWriter = new FileWriter("PrestitoFilm\\ElencoPrestiti.txt");
+            FileWriter myWriter = new FileWriter("ElencoPrestiti.txt");
             for (String i : coppiePrestiti.keySet()) {
                 myWriter.write(i + ";" + coppiePrestiti.get(i) + "\n");
             }
