@@ -13,7 +13,7 @@ public class Prestito {
     private boolean pagato;
 
     /**
-     * @param utente utente del prestito
+     * @param ute utente del prestito
      * @param f film del prestito
      * @param p data del prestito
      * @param pag stato del pagamento

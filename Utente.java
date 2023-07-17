@@ -9,7 +9,13 @@ public class Utente extends Persona {
     private ArrayList<Prestito> Prestiti;
 
     /**
-     * costruttore
+     * @param nome nome della persona
+     * @param cognome cognome della persona
+     * @param password password della persona
+     * @param email email della persona
+     * @param indirizzo indirizzo della persona
+     * @param telefono numero di telefono della persona
+     * ereditati dalla classe persona
      */
     public Utente(String nome, String cognome, String password, String email, String indirizzo, String telefono){
         super(nome, cognome, password, email, indirizzo, telefono);
@@ -27,7 +33,7 @@ public class Utente extends Persona {
 
     /**
      * Aggiorna le informazioni dell'utente 
-     * @throws IOExeption
+     * @throws IOException il metodo aggiornaInformazioniUtente lancia un eccezione
      */
     public void aggiornaInformazioniUtente() throws IOException{
         String decisione;
@@ -88,7 +94,7 @@ public class Utente extends Persona {
             return vuoto;
         }
         else{
-            System.out.println("\nQuali tra i seguenti libri vuoi restituire?\nDigita l'id del film corrispondente\n\nDigita 'exit' per uscire\n\n");
+            System.out.println("\nQuali tra i seguenti film vuoi restituire?\nDigita l'id del film corrispondente\n\nDigita 'exit' per uscire\n\n");
             for(Prestito x : Prestiti){
                 System.out.println(x.getFilm().getID()+"\t"+x.getFilm().getTitolo());
             }

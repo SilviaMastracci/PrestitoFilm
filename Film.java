@@ -2,7 +2,7 @@
 import java.time.LocalDate;
 public class Film {
     /**
-     * Imformazioni del libro
+     * Imformazioni del film
      */
     private String ID;
     private String titolo;
@@ -40,13 +40,14 @@ public class Film {
 
     /**
      * Ritorna il titolo del film
+     * @return valore di Titolo
      */
     public String getTitolo(){
         return this.titolo;
     }
 
     /**
-     * Ritorna il genere del libro
+     * Ritorna il genere del film
      * @return valore di Genere
      */
     public String getGenere(){
@@ -95,7 +96,7 @@ public class Film {
 
     /**
      * Camcia il genere del film
-     * @param g nuovo genere da dare al libro
+     * @param g nuovo genere da dare al film
      */
     public void setGenere(String g){
         this.genere = g;
@@ -111,7 +112,7 @@ public class Film {
 
     /**
      * Cambia la descrizione del film
-     * @param d
+     * @param d nuova descrizione da assegnare al film
      */
     public void setDescrizione(String d){
         this.descrizione = d;
@@ -126,7 +127,7 @@ public class Film {
     }
 
     /**
-     * Cambia l'id del libro 
+     * Cambia l'id del film 
      * @param i nuovo id da dare al regsitro  
      */
     public void setID(String i){
@@ -141,7 +142,7 @@ public class Film {
     public Prestito faiPrestito(Utente utente){
         LocalDate pData = LocalDate.now();
         setStatoPrestito(true);
-        System.out.println("\nIl libro " + titolo + " è stato preso in prestito da " + utente.getNome());
+        System.out.println("\nIl film " + titolo + " è stato preso in prestito da " + utente.getNome());
         Prestito prestito = new Prestito(utente, this, pData, false);
         utente.addPrestito(prestito);
         return prestito;
@@ -160,8 +161,9 @@ public class Film {
 
     /**
      * Restituisce il film
-     * @param utente utente che restituisce il libro
+     * @param utente utente che restituisce il film
      * @param prestito il prestito che viene estinto 
+     * @return stringa
      */
     public String restituisciFilm(Utente utente, Prestito prestito){
         prestito.pagaPenale();

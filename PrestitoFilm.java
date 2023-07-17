@@ -10,7 +10,7 @@ public class PrestitoFilm {
 
     /* Caricamento dai file txt */
 
-    //Import dell'elenco dei film da file .txt, la stringa viene poi elaborata cosi da creare le istanze dei vari film ed aggiungerli all'elenco di libri*/
+    //Import dell'elenco dei film da file .txt, la stringa viene poi elaborata cosi da creare le istanze dei vari film ed aggiungerli all'elenco di film*/
     private static ArrayList<Film> caricamentoFilm() {
         ArrayList<Film> elencoFilm = new ArrayList<Film>();
         try {

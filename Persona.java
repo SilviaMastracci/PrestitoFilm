@@ -29,6 +29,7 @@ public class Persona {
 
     /**
      * Stampa le infromazioni generali della persona
+     * @return stringa
      */
     public String printInfo(){
         return "-----------------------------------------" + "\nI tuoi dati sono i seguenti: \n" + "Nome e cognome: " + nome + " " + cognome + "\n" + "Email: " + email + "\n" + "Indirizzo: " + indirizzo + "\n" + "Numero di telefono: " + telefono + "\n";
@@ -92,6 +93,7 @@ public class Persona {
 
     /**
      * Ritorna il cognome della persona
+     * @return valore di cognome
      */
     public String getCognome(){
         return this.cognome;
