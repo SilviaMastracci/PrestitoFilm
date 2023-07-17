@@ -121,7 +121,7 @@ public class Utente extends Persona {
             while (!telefono_valido) {
                 String telefono = sc.next();
                 sc.nextLine();
-                if (telefono.length() > 8 && telefono.length() < 15 && telefono.matches("^[0-9]+$")){
+                if (telefono.length() > 8 && telefono.length() < 12 && telefono.matches("^[0-9]+$")){
                     telefono_valido = true;
                     setTelefono(telefono);
                 }
