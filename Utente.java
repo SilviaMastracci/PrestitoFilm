@@ -172,14 +172,14 @@ public class Utente extends Persona {
             while(!password_corretto){
                 System.out.println("Inserisci la vecchia password");
                 String oldPass = sc.next();
+                if(!oldPass.equals(getPassword())){
+                        System.out.println("La password inserita non è valida\n");
+                    }
                 if(oldPass.equals(getPassword())){
                     System.out.println("\nInserisci la nuova Password: ");
                     setPassword(sc.next());
                     System.out.println("\nLa password è stata aggiornata con successo");
                     password_corretto = true;
-                }
-                if(!oldPass.equals(getPassword())){
-                    System.out.println("La password inserita non è valida\n");
                 }
             }
         }
