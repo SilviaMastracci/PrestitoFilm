@@ -7,5 +7,4 @@ PrestitoFilm->Utente: Creazione istanza di Utente
 Utente->PrestitoFilm: Restituisci istanza di Utente
 PrestitoFilm->PrestitoFilm: Aggiungi Utente all'elencoUtenti
 PrestitoFilm->File: Chiudi file
-Utente->PrestitoFilm: Altre interazioni...
 @enduml

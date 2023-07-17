@@ -7,5 +7,4 @@ Utente->PrestitoFilm: Stampa l'elenco dei generi disponibili
 Utente->PrestitoFilm: Seleziona un genere
 PrestitoFilm->Film: Verifica se il genere corrisponde a un film nell'elenco
 Utente->PrestitoFilm: Stampa informazioni sui film corrispondenti
-Utente->PrestitoFilm: Altre interazioni...
 @enduml

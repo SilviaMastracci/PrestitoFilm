@@ -1,15 +1,11 @@
-Il programma permette di accedere ad un catalogo cinematografico da cui affittare i film.
-In primis consente di compilare i dati di iscrizione per effettuare il login; di seguito sono salvati i dati personali per gli accessi successivi.
-Compiuti questi passaggi il programma consente una ricerca dei film di nostro interesse tramite le seguenti sottocategorie: titolo, genere, regista.
-Ponendo come primo esempio la ricerca per titolo.
-Il programma esegue una ricerca del nome da noi desiderato, lo proietta a schermo e ci propone le opzioni del caso: 
-- Avere accesso alla sinossi del film con la corrispettiva durata;
-- Affittare il film stesso.
-Scegliendo invece la ricerca per genere o regista, il programma filtra i film presenti nell'elenco associando le due caratteristiche sopracitate.
-Per concludere il programma rende disponibili la restitituzione del prodotto da noi affittato e la modifica, eventuale, dei nostri dati personali inseriti in precedenza; oltre ad una funzione di riepilogo dei film presi in prestito antecedentemente.
-
-
-Il programma permette di accedere ad un catalogo cinematografico da cui prendere in prestito i film.
-In primis il programma ci chiede di compilare i dati di iscrizione (nome,cognome,indirizzo,email,password e numero di telefono) che verranno salvati, così da permettere per gli accessi successivi il login tramite email e password.
-Fatto ciò entriamo nel menù principale dove ci si presenta una scelta di operazioni da effettuare come: 
-1. 
+Il programma permette di accedere ad un catalogo cinematografico da cui poter prendere in prestito i film.
+In primis il programma ci chiede di compilare i dati di iscrizione (nome,cognome,indirizzo,email,password e numero di telefono) che verranno salvati su file di testo, così da permettere, per gli accessi successivi, il login tramite email e password.
+Fatto ciò entriamo nel menù principale dove ci si presenta una scelta di operazioni da effettuare:
+1. ottenere la lista dei film presenti
+2. effettuare una ricerca per titolo, genere, regista
+3. restituire un film preso in prestito
+4. visualizzare la lista dei film presi in prestito e i propri dati personali, con la possibilità di poterli modificare
+Scegliendo di effettuare una ricerca per titolo, otterremo un lista con i titoli dei film presenti in libreria con la possibilità di poterli prendere in prestito o di leggere la loro descrizione. Se il film dovesse non essere disponibile perchè già preso in prestito da qualcun altro, il sistema ritornerà un messaggio in cui dichiarerà che il film scelto è già prenotato.
+Scegliendo, invece, di effettuare una ricerca per genere (o regista), il sistema mostrerà una lista con i generi (o i registi) dei film presenti nel catalogo e permetterà di estrapolare i film appartenenti a quello scelto.
+Una volta preso in prestito un film lo si può restituire digitando l'ID ad esso associato.
+Infine, si può scegliere di vedere i film presi in prestito e i propri dati, e abbiamo la possibilità di modificare questi ultimi sceglindo quale campo voglio aggiornare.

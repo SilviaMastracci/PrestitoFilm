@@ -11,5 +11,4 @@ Film->Utente: Restituisci messaggio di conferma restituzione
 Prestito->Utente: Rimuovi il prestito dall'utente
 PrestitoFilm->HashMap: Rimuovi l'elemento delle coppie di prestiti corrispondente
 PrestitoFilm->PrestitoFilm: Aggiungi il prestito alla lista prestitiDaRimuovere
-Utente->PrestitoFilm: Altre interazioni con l'applicazione (menu, input, ecc.)
 @enduml

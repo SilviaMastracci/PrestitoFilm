@@ -7,5 +7,4 @@ Utente->PrestitoFilm: Se scelta è login, fornisci email e password
 PrestitoFilm->Utente: Verifica credenziali
 Utente->PrestitoFilm: Restituisci istanza di Utente
 PrestitoFilm->PrestitoFilm: Aggiungi Utente principale
-Utente->PrestitoFilm: Altre interazioni...
 @enduml

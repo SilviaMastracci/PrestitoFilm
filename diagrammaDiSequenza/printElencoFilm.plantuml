@@ -3,6 +3,5 @@ Utente->PrestitoFilm: main()
 Utente->PrestitoFilm: Richiedi stampa elenco film
 PrestitoFilm->Film: Restituisci informazioni dei film
 Utente->PrestitoFilm: Stampa informazioni dei film
-Utente->PrestitoFilm: Altre interazioni...
 @enduml
 

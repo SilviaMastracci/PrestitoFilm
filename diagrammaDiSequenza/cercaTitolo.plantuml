@@ -15,6 +15,5 @@ Prestito->Film: Aggiorna lo stato del film in prestito
 Prestito->Utente: Aggiungi il prestito all'utente
 Utente->PrestitoFilm: Aggiungi il prestito all'elencoPrestiti
 PrestitoFilm->HashMap: Aggiorna le coppie di prestiti
-Utente->PrestitoFilm: Altre interazioni...
 
 @enduml

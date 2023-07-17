@@ -1,0 +1,5 @@
+Silvia;Mastracci;1;1;via a caso;3324456678
+fefo;raschiatore;2;2;via ciao;45736583745
+Anto;Tagliente;3;3;via caro amico;453457637
+balu;orso;4;4;vai miele;32432454
+luca;minazzi;0;0;via cucu 6;4328749944

@@ -6,5 +6,4 @@ PrestitoFilm->Utente: Restituisci informazioni attuali dell'utente
 Utente->PrestitoFilm: Stampa informazioni attuali dell'utente e dei film presi in prestito
 Utente->PrestitoFilm: Fornisci scelta di conferma o annullamento aggiornamento dati
 PrestitoFilm->Utente: Se scelta è conferma, aggiorna i dati dell'utente
-Utente->PrestitoFilm: Altre interazioni con l'applicazione (menu, input, ecc.)
 @enduml

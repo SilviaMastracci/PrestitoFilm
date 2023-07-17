@@ -7,5 +7,4 @@ Utente->PrestitoFilm: Stampa l'elenco dei registi disponibili
 Utente->PrestitoFilm: Seleziona un regista
 PrestitoFilm->Film: Verifica se il regista corrisponde a un film nell'elenco
 Utente->PrestitoFilm: Stampa informazioni sui film corrispondenti
-Utente->PrestitoFilm: Altre interazioni...
 @enduml

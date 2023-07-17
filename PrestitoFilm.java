@@ -15,7 +15,7 @@ public class PrestitoFilm {
         ArrayList<Film> elencoFilm = new ArrayList<Film>();
         try {
         
-            File importFilm = new File("PrestitoFilm\\ElencoFilm.txt");
+            File importFilm = new File("filetxt\\ElencoFilm.txt");
             Scanner myReader = new Scanner(importFilm);
 
             while (myReader.hasNextLine()) {
@@ -43,7 +43,7 @@ public class PrestitoFilm {
     //Import dell'elenco degli utenti da file .txt, la stringa viene elaborata cosi da creare le istanze dei vari utenti ed aggiungerli all'elenco di utenti. La lista sarà utile per convalidare le credenziali di accesso
     private static void caricamentoUtenti(ArrayList<Utente> elencoUtenti) {
         try {
-            File importUtenti = new File("PrestitoFilm\\ElencoUtenti.txt");
+            File importUtenti = new File("filetxt\\ElencoUtenti.txt");
             Scanner myReader = new Scanner(importUtenti);
 
             while (myReader.hasNextLine()) {
@@ -69,7 +69,7 @@ public class PrestitoFilm {
      //Import delle coppie utente id film richiesto / data di prestito e lo stato del pagamento, verranno poi utilizzate per la effettiva creazione di un elenco dei prestiti
     private static void caricamentoPrestiti(ArrayList<Film> elencoFilm, ArrayList<Utente> elencoUtenti, ArrayList<Prestito> elencoPrestiti) {
         try {
-            File importPrestiti = new File("PrestitoFilm\\ElencoPrestiti.txt");
+            File importPrestiti = new File("filetxt\\ElencoPrestiti.txt");
             Scanner myReader = new Scanner(importPrestiti);
 
             while (myReader.hasNextLine()) {

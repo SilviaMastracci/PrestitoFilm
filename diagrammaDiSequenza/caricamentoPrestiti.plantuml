@@ -7,5 +7,4 @@ PrestitoFilm->Prestito: Creazione istanza di Prestito
 Prestito->PrestitoFilm: Restituisci istanza di Prestito
 PrestitoFilm->PrestitoFilm: Aggiungi Prestito all'elencoPrestiti
 PrestitoFilm->File: Chiudi file
-Utente->PrestitoFilm: Altre interazioni...
 @enduml
