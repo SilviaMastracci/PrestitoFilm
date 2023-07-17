@@ -403,7 +403,7 @@ public class PrestitoFilm {
     //Salvataggio su file dell'elenco dei film
     private static void salvataggioFilm(ArrayList<Film> elencoFilm) {
         try {
-            FileWriter myWriter = new FileWriter("ElencoFilm.txt");
+            FileWriter myWriter = new FileWriter("PrestitoFilm\\ElencoFilm.txt");
             for (Film film : elencoFilm) {
                 myWriter.write(film.toString() + "\n");
             }
@@ -417,7 +417,7 @@ public class PrestitoFilm {
     //Salvataggio su file dell'elenco degli utenti e dei relativi attributi
     private static void salvataggioUtenti(ArrayList<Utente> elencoUtenti) {
         try {
-            FileWriter myWriter = new FileWriter("ElencoUtenti.txt");
+            FileWriter myWriter = new FileWriter("PrestitoFilm\\ElencoUtenti.txt");
             for (Utente utente : elencoUtenti) {
                 myWriter.write(utente.toString() + "\n");
             }
@@ -431,7 +431,7 @@ public class PrestitoFilm {
     //Salvataggio su file dell'elenco delle prenotazioni
     private static void salvataggioPrenotazioni(HashMap<String, String> coppiePrestiti) {
         try {
-            FileWriter myWriter = new FileWriter("ElencoPrestiti.txt");
+            FileWriter myWriter = new FileWriter("PrestitoFilm\\ElencoPrestiti.txt");
             for (String i : coppiePrestiti.keySet()) {
                 myWriter.write(i + ";" + coppiePrestiti.get(i) + "\n");
             }
