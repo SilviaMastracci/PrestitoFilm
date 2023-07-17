@@ -1,8 +1,15 @@
-Il programma consente di prendere in prestito i film. 
-In primis consente di iscriversi e poichè salva le informazioni, dal secondo accesso si può fare direttamente il login.
-Una volta acceduto è possibile sciegliere l'operazione da eseguire.
-Il programma mostra la lista dei film presenti, permette un ricerca per titolo, per genere e per regista, consente di restituire i film e permette di modificare i propri dati.
-Per quanto riguarda la ricerca per titolo, il programma mostra i titoli di tutti i film presenti e selezionandone uno permette di prenderlo in prestito, se disponibile, o di leggere la descrizione associata. 
-Invece se si vuole effettuare una ricerca per genere o regista, il programma mostra l'elenco dei generi o dei registi dei film presenti e digitando il genere o il ragista di interesse verrà restituita una lista dei film inerenti.
-Il programma consente anche di restituire i film presi in prestito.
-Si può anche avere un riepilogo dei film presi in prestito e dei prorpri dati personali e si può scegliere di modificarli.
+Il programma permette di accedere ad un catalogo cinematografico da cui affittare i film.
+In primis consente di compilare i dati di iscrizione per effettuare il login; di seguito sono salvati i dati personali per gli accessi successivi.
+Compiuti questi passaggi il programma consente una ricerca dei film di nostro interesse tramite le seguenti sottocategorie: titolo, genere, regista.
+Ponendo come primo esempio la ricerca per titolo.
+Il programma esegue una ricerca del nome da noi desiderato, lo proietta a schermo e ci propone le opzioni del caso: 
+- Avere accesso alla sinossi del film con la corrispettiva durata;
+- Affittare il film stesso.
+Scegliendo invece la ricerca per genere o regista, il programma filtra i film presenti nell'elenco associando le due caratteristiche sopracitate.
+Per concludere il programma rende disponibili la restitituzione del prodotto da noi affittato e la modifica, eventuale, dei nostri dati personali inseriti in precedenza; oltre ad una funzione di riepilogo dei film presi in prestito antecedentemente.
+
+
+Il programma permette di accedere ad un catalogo cinematografico da cui prendere in prestito i film.
+In primis il programma ci chiede di compilare i dati di iscrizione (nome,cognome,indirizzo,email,password e numero di telefono) che verranno salvati, così da permettere per gli accessi successivi il login tramite email e password.
+Fatto ciò entriamo nel menù principale dove ci si presenta una scelta di operazioni da effettuare come: 
+1. 
